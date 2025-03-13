@@ -65,7 +65,7 @@ const MyCourses = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#fff',
     paddingVertical: 10,
   },
   headerContainer: {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 10,
+    // borderRadius: 10,
     padding: 12,
     marginBottom: 10,
     elevation: 3,

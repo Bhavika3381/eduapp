@@ -1,55 +1,229 @@
 
 
+// import React from "react";
+// import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+// import { ScrollView } from "react-native-gesture-handler";
+// import Icon from "react-native-vector-icons/FontAwesome";
 
-import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+// const courses = [
+//   {
+//     id: "1",
+//     image: "https://i.pinimg.com/236x/14/cb/c1/14cbc10e848a3e5e794c11b57bf1ba3c.jpg",
+//     title: "Full-Stack Development",
+//     instructor: "By John Doe",
+//     rating: 4.5,
+//     fees: "₹4,999",
+//   },
+//   {
+//     id: "2",
+//     image: "https://i.pinimg.com/236x/22/bc/8e/22bc8ebef610eb881071e1a7007a7a80.jpg",
+//     title: "Digital Marketing",
+//     instructor: "By Jane Smith",
+//     rating: 4.7,
+//     fees: "₹3,499",
+//   },
+//   {
+//     id: "3",
+//     image: "https://i.pinimg.com/236x/d3/d5/a3/d3d5a3e259ee8ca212d85f07e92c16cd.jpg",
+//     title: "Data Science Mastery",
+//     instructor: "By Dr. Ravi Kumar",
+//     rating: 4.8,
+//     fees: "₹5,999",
+//   },
+//   {
+//     id: "4",
+//     image: "https://i.pinimg.com/236x/e6/ec/86/e6ec86d140147e8dc72514dbd2af546f.jpg",
+//     title: "UI/UX Design",
+//     instructor: "By Alex Johnson",
+//     rating: 4.6,
+//     fees: "₹2,999",
+//   },
+// ];
 
-const topCourses = [
-  { 
-    id: '1', 
-    title: 'Data Science', 
-    description: 'Learn data analysis and ML.', 
-    image: 'https://i.pinimg.com/236x/14/cb/c1/14cbc10e848a3e5e794c11b57bf1ba3c.jpg'
+// const renderStars = (rating) => {
+//   const fullStars = Math.floor(rating);
+//   const halfStar = rating % 1 !== 0;
+//   const stars = [];
+
+//   for (let i = 0; i < fullStars; i++) {
+//     stars.push(<Icon key={i} name="star" size={16} color="#FFD700" />);
+//   }
+//   if (halfStar) {
+//     stars.push(<Icon key="half" name="star-half" size={16} color="#FFD700" />);
+//   }
+//   return stars;
+// };
+
+// const CourseCard = ({ course }) => (
+//   <View style={styles.card}>
+//     {/* Course Image */}
+//     <Image source={{ uri: course.image }} style={styles.courseImage} />
+
+//     {/* Course Title & Instructor */}
+//     <Text style={styles.title}>{course.title}</Text>
+//     <Text style={styles.subtitle}>{course.instructor}</Text>
+
+//     {/* Ratings */}
+//     <View style={styles.ratingContainer}>{renderStars(course.rating)}</View>
+
+//     {/* Fees */}
+//     <Text style={styles.fees}>{course.fees}</Text>
+//   </View>
+// );
+
+// const TopCourses = () => {
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.heading}>Top Courses</Text>
+//       <FlatList
+//         data={courses}
+//         horizontal
+//         showsHorizontalScrollIndicator={false}
+//         keyExtractor={(item) => item.id}
+//         renderItem={({ item }) => <CourseCard course={item} />}
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     padding: 16,
+//     backgroundColor: "#fff",
+//     flex: 1,
+//   },
+//   heading: {
+//     fontSize: 22,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 10,
+//   },
+//   card: {
+//     width: 250,
+//     // borderRadius: 10,
+//     backgroundColor: "#fff",
+//     paddingBottom: 10,
+//     marginRight: 15,
+//     // elevation: 3, 
+//   },
+//   courseImage: {
+//     width: "100%",
+//     height: 140,
+//     borderRadius: 4,
+//     // borderTopRightRadius: 4,
+//   },
+//   title: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginTop: 8,
+//     paddingHorizontal: 10,
+//   },
+//   subtitle: {
+//     fontSize: 14,
+//     color: "#666",
+//     paddingHorizontal: 10,
+//   },
+//   ratingContainer: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//     marginTop: 4,
+//     paddingHorizontal: 10,
+//   },
+//   fees: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "#27ae60",
+//     marginTop: 8,
+//     paddingHorizontal: 10,
+//   },
+// });
+
+// export default TopCourses;
+import React from "react";
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
+
+const courses = [
+  {
+    id: "1",
+    image: "https://i.pinimg.com/236x/14/cb/c1/14cbc10e848a3e5e794c11b57bf1ba3c.jpg",
+    title: "Full-Stack Development",
+    instructor: "By John Doe",
+    rating: 4.5,
+    fees: "₹4,999",
   },
-  { 
-    id: '2', 
-    title: 'Web Development', 
-    description: 'Master front-end & back-end.', 
-    image: 'https://i.pinimg.com/236x/22/bc/8e/22bc8ebef610eb881071e1a7007a7a80.jpg'
+  {
+    id: "2",
+    image: "https://i.pinimg.com/236x/22/bc/8e/22bc8ebef610eb881071e1a7007a7a80.jpg",
+    title: "Digital Marketing",
+    instructor: "By Jane Smith",
+    rating: 4.7,
+    fees: "₹3,499",
   },
-  { 
-    id: '3', 
-    title: 'Graphic Design', 
-    description: 'Create stunning visuals.', 
-    image: 'https://i.pinimg.com/236x/d3/d5/a3/d3d5a3e259ee8ca212d85f07e92c16cd.jpg'
+  {
+    id: "3",
+    image: "https://i.pinimg.com/236x/d3/d5/a3/d3d5a3e259ee8ca212d85f07e92c16cd.jpg",
+    title: "Data Science Mastery",
+    instructor: "By Dr. Ravi Kumar",
+    rating: 4.8,
+    fees: "₹5,999",
   },
-  { 
-    id: '4', 
-    title: 'Cybersecurity', 
-    description: 'Protect systems from attacks.', 
-    image: 'https://i.pinimg.com/236x/e6/ec/86/e6ec86d140147e8dc72514dbd2af546f.jpg'
-  }
+  {
+    id: "4",
+    image: "https://i.pinimg.com/236x/e6/ec/86/e6ec86d140147e8dc72514dbd2af546f.jpg",
+    title: "UI/UX Design",
+    instructor: "By Alex Johnson",
+    rating: 4.6,
+    fees: "₹2,999",
+  },
 ];
 
+const renderStars = (rating) => {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 !== 0;
+  const stars = [];
+
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<Icon key={i} name="star" size={16} color="#FFD700" />);
+  }
+  if (halfStar) {
+    stars.push(<Icon key="half" name="star-half" size={16} color="#FFD700" />);
+  }
+  return stars;
+};
+
+const CourseCard = ({ course }) => (
+  <View style={styles.card}>
+    <Image source={{ uri: course.image }} style={styles.courseImage} />
+    <Text style={styles.title}>{course.title}</Text>
+    <Text style={styles.subtitle}>{course.instructor}</Text>
+    <View style={styles.ratingContainer}>{renderStars(course.rating)}</View>
+    <Text style={styles.fees}>{course.fees}</Text>
+  </View>
+);
+
 const TopCourses = () => {
-  const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-    </View>
-  );
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Top Courses</Text>
+      {/* Header with View All Button */}
+      <View style={styles.headerRow}>
+        <Text style={styles.heading}>Top Courses</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("AllCourses")}>
+          <Text style={styles.viewAllText}>View All →</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Horizontal Course List */}
       <FlatList
-        data={topCourses}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        data={courses}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.list}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <CourseCard course={item} />}
       />
     </View>
   );
@@ -57,50 +231,63 @@ const TopCourses = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
+    padding: 16,
+    backgroundColor: "#fff",
+    flex: 1,
   },
-  header: {
-    fontSize: 18,
-    fontWeight: 'bold',
+  headerRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 10,
-    textAlign: 'left',
-    paddingLeft: 15,
-    color: '#333',
   },
-  list: {
-    paddingLeft: 15,
+  heading: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#333",
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  viewAllText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#2D9CDB",
   },
   card: {
-    width: 190,
-    height: 140,
-    backgroundColor: '#ffffff', // White background
-    borderRadius: 10,
-    padding: 12,
-    marginRight: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    alignItems: 'center',
+    width: 250,
+    backgroundColor: "#fff",
+    paddingBottom: 10,
+    marginRight: 15,
   },
-  image: {
+  courseImage: {
     width: "100%",
-    height: 70,
-    borderRadius: 2,
+    height: 140,
+    borderRadius: 4,
   },
   title: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginTop: 6,
-    textAlign: 'center',
-    color: '#333',
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+    marginTop: 8,
+    paddingHorizontal: 10,
   },
-  description: {
-    fontSize: 12,
-    textAlign: 'center',
-    color: '#666',
-    marginTop: 3,
+  subtitle: {
+    fontSize: 14,
+    color: "#666",
+    paddingHorizontal: 10,
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 4,
+    paddingHorizontal: 10,
+  },
+  fees: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#27ae60",
+    marginTop: 8,
+    paddingHorizontal: 10,
   },
 });
 

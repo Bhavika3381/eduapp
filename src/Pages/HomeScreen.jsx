@@ -4,6 +4,9 @@ import CourseTypes from '../Components/HomeComp/CourseTypes';
 import TopCourses from '../Components/HomeComp/TopCourses';
 import MyCourses from '../Components/HomeComp/MyCourses';
 import Header from '../Components/Header';
+import EduAdScreen from '../Components/HomeComp/EduAdScreen';
+import PopularCourses from '../Components/HomeComp/PopularCourses';
+import FeaturedWebCourses from '../Components/HomeComp/FeaturedWebCourses';
 
 const { width, height } = Dimensions.get('window');
 
@@ -12,8 +15,11 @@ const HomeScreen = () => {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* <Text style={styles.title}>Welcome to EduApp</Text> */}
       <Header/>
+      <EduAdScreen/>
       <CourseTypes />
       <TopCourses />
+      <PopularCourses/>
+      <FeaturedWebCourses/>
       <MyCourses/>
     </ScrollView>
   );
