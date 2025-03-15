@@ -14,6 +14,9 @@ import AccountScreen from './src/Pages/AccountScreen';
 import WishlistScreen from './src/Pages/WishlistScreen';
 import MyLearningScreen from './src/Pages/MyLearningScreen';
 import CourseDetailss from './src/Components/MyLearningComp/CourseDetailss';
+import Notification from './src/Components/HeaderComp/Notification';
+import Cart from './src/Components/HeaderComp/Cart';
+import Checkout from './src/Components/HeaderComp/Checkout';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +37,9 @@ const App = () => {
           <Stack.Screen name="CourseDetail" component={CourseDetailScreen} options={{ title: 'Course Details' }} />
           <Stack.Screen name="CourseDetails" component={BusinessCourseDetailScreen} options={{ title: 'Course Details' }} />
           <Stack.Screen name="CourseDetailss" component={CourseDetailss} options={{ title: 'Course Details' }} />
+          <Stack.Screen name="Notification" component={Notification} options={{ title: 'Notification' }} />
+          <Stack.Screen name="Cart" component={Cart} options={{ title: 'Cart' }} />
+          <Stack.Screen name="Checkout" component={Checkout} options={{ title: 'Checkout' }} />
         </Stack.Navigator>
         <Footer />
       </View>

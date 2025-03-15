@@ -56,12 +56,26 @@ const MyLearning = () => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>My Courses</Text>
         <View style={styles.headerIcons}>
-          <TouchableOpacity style={styles.icon}>
+          {/* <TouchableOpacity style={styles.icon}>
             <FontAwesome name="search" size={22} color="#333" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
             <FontAwesome name="shopping-cart" size={22} color="#333" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          {/* Cart Icon */}
+                  <TouchableOpacity 
+                    style={styles.cartButton}
+                    onPress={() => navigation.navigate('Cart')} // Navigate to Cart Page
+                  >
+                    <FontAwesome name="shopping-cart" size={24} color="grey" />
+                  </TouchableOpacity>
+                   {/* Notification Icon */}
+                         <TouchableOpacity 
+                            style={styles.notificationButton}
+                            onPress={() => navigation.navigate('Notification')} // Open Notification Page
+                          >
+                            <FontAwesome name="bell-o" size={24} color="grey" />
+                          </TouchableOpacity>
         </View>
       </View>
 
@@ -184,6 +198,8 @@ const styles = StyleSheet.create({
   visitIcon: {
     padding: 8,
   },
+  notificationButton: { marginLeft: 15, },
+  cartButton: { marginLeft: 15, },
 });
 
 export default MyLearning;
