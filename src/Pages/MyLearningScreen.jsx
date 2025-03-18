@@ -56,26 +56,21 @@ const MyLearning = () => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>My Courses</Text>
         <View style={styles.headerIcons}>
-          {/* <TouchableOpacity style={styles.icon}>
-            <FontAwesome name="search" size={22} color="#333" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.icon}>
-            <FontAwesome name="shopping-cart" size={22} color="#333" />
-          </TouchableOpacity> */}
+       
           {/* Cart Icon */}
-                  <TouchableOpacity 
+           <TouchableOpacity 
                     style={styles.cartButton}
                     onPress={() => navigation.navigate('Cart')} // Navigate to Cart Page
-                  >
-                    <FontAwesome name="shopping-cart" size={24} color="grey" />
-                  </TouchableOpacity>
-                   {/* Notification Icon */}
-                         <TouchableOpacity 
-                            style={styles.notificationButton}
-                            onPress={() => navigation.navigate('Notification')} // Open Notification Page
-                          >
-                            <FontAwesome name="bell-o" size={24} color="grey" />
-                          </TouchableOpacity>
+           >
+            <FontAwesome name="shopping-cart" size={24} color="grey" />
+            </TouchableOpacity>
+            {/* Notification Icon */}
+            <TouchableOpacity 
+                  style={styles.notificationButton}
+                  onPress={() => navigation.navigate('Notification')} // Open Notification Page
+             >
+              <FontAwesome name="bell-o" size={24} color="grey" />
+            </TouchableOpacity>
         </View>
       </View>
 
@@ -107,7 +102,7 @@ const MyLearning = () => {
               style={styles.visitIcon}
               onPress={() => navigation.navigate('CourseDetailss', { course: item })}
             >
-              <FontAwesome name="arrow-right" size={20} color="#0052D4" />
+              <FontAwesome name="chevron-right" size={15} color="#59c2c4" />
             </TouchableOpacity>
           </View>
         )}
@@ -145,16 +140,17 @@ const styles = StyleSheet.create({
   tabContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
     borderRadius: 8,
     paddingVertical: 8,
     marginTop: 10,
     marginBottom: 15,
+    
   },
   tab: {
     flex: 1,
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 5,
   },
   activeTab: {
     backgroundColor: '#0052D4',
@@ -167,6 +163,9 @@ const styles = StyleSheet.create({
   activeTabText: {
     color: '#fff',
     fontWeight: 'bold',
+    borderBottomWidth: 3,  // ✅ Light underline
+    borderBottomColor: '#ddd',  // ✅ Light gray color for subtle effect
+    paddingBottom: 10,
   },
   courseCard: {
     flexDirection: 'row',
@@ -175,6 +174,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
     marginBottom: 12,
+    borderBottomWidth: 1,  // ✅ Light underline
+    borderBottomColor: '#ddd',  // ✅ Light gray color for subtle effect
+    paddingBottom: 10,
     // elevation: 3,
   },
   courseImage: {
@@ -196,7 +198,7 @@ const styles = StyleSheet.create({
     color: '#777',
   },
   visitIcon: {
-    padding: 8,
+    padding: 5,
   },
   notificationButton: { marginLeft: 15, },
   cartButton: { marginLeft: 15, },

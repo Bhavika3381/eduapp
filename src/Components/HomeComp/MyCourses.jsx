@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
 
 const courses = [
   { 
@@ -32,6 +34,38 @@ const courses = [
   }
 ];
 
+const CircularProgress = ({ percentage }) => {
+  const radius = 20;
+  const strokeWidth = 4;
+  const circumference = 2 * Math.PI * radius;
+  const progressOffset = circumference - (percentage / 100) * circumference;
+
+  return (
+    <Svg width={50} height={50} viewBox="0 0 50 50">
+      <Circle
+        cx="25"
+        cy="25"
+        r={radius}
+        stroke="#e6e6e6"
+        strokeWidth={strokeWidth}
+        fill="none"
+      />
+      <Circle
+        cx="25"
+        cy="25"
+        r={radius}
+        stroke="#007bff"
+        strokeWidth={strokeWidth}
+        fill="none"
+        strokeDasharray={circumference}
+        strokeDashoffset={progressOffset}
+        strokeLinecap="round"
+      />
+      <Text style={styles.percentageText}>{percentage}%</Text>
+    </Svg>
+  );
+};
+
 const MyCourses = () => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -40,7 +74,7 @@ const MyCourses = () => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>
       </View>
-      <Text style={styles.percentage}>{item.progress}%</Text>
+      <CircularProgress percentage={item.progress} />
     </View>
   );
 
@@ -92,7 +126,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    // borderRadius: 10,
     padding: 12,
     marginBottom: 10,
     elevation: 3,
@@ -104,7 +137,7 @@ const styles = StyleSheet.create({
   image: {
     width: 60,
     height: 60,
-    borderRadius: 8,
+    borderRadius: 3,
     marginRight: 12,
   },
   textContainer: {
@@ -120,11 +153,13 @@ const styles = StyleSheet.create({
     color: '#666',
     marginTop: 3,
   },
-  percentage: {
-    fontSize: 14,
+  percentageText: {
+    position: 'absolute',
+    top: 15,
+    left: 15,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: '#333',
-    marginLeft: 10,
+    color: '#007bff',
   },
 });
 

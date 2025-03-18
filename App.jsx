@@ -17,11 +17,17 @@ import CourseDetailss from './src/Components/MyLearningComp/CourseDetailss';
 import Notification from './src/Components/HeaderComp/Notification';
 import Cart from './src/Components/HeaderComp/Cart';
 import Checkout from './src/Components/HeaderComp/Checkout';
+import CourseListScreen from './src/Components/CourseListScreen';
+import TopCourseDetailsScreen from './src/Components/HomeComp/TopCourseDetailsScreen';
+import VideoPlayerScreen from './src/Components/HomeComp/VideoPlayerScreen';
+
+// import CourseListScreen from './src/Components/CourseListScreen';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
+    
     <NavigationContainer>
       <View style={styles.container}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -33,17 +39,25 @@ const App = () => {
           <Stack.Screen name="MyLearning" component={MyLearningScreen} />
           {/* <Stack.Screen name="Menu" component={MenuScreen} /> */}
 
-          {/* <Stack.Screen name="RecentUploads" component={RecentUploadsScreen} options={{ title: 'Recent Uploads' }} /> */}
+         
+           {/* Course Details Screens */}
           <Stack.Screen name="CourseDetail" component={CourseDetailScreen} options={{ title: 'Course Details' }} />
           <Stack.Screen name="CourseDetails" component={BusinessCourseDetailScreen} options={{ title: 'Course Details' }} />
           <Stack.Screen name="CourseDetailss" component={CourseDetailss} options={{ title: 'Course Details' }} />
+
+          {/* Utility Screens */}
           <Stack.Screen name="Notification" component={Notification} options={{ title: 'Notification' }} />
           <Stack.Screen name="Cart" component={Cart} options={{ title: 'Cart' }} />
           <Stack.Screen name="Checkout" component={Checkout} options={{ title: 'Checkout' }} />
+          <Stack.Screen name="CourseList" component={CourseListScreen} options={{ title: 'Courses' }} />
+
+          <Stack.Screen name="TopCourseDetails" component={TopCourseDetailsScreen} options={{ title: 'TopCourseDetails' }} />
+          <Stack.Screen name="VideoPlayer" component={VideoPlayerScreen} options={{ title: 'VideoPlayerScreen' }} />
         </Stack.Navigator>
         <Footer />
       </View>
     </NavigationContainer>
+    
   );
 };
 
